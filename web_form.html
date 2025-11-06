@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Front-End Quiz</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: "Poppins", Arial, sans-serif;
+      margin: 0;
+      background: linear-gradient(135deg, #d8e8f0, #f9f9f9);
+      color: #2c3e50;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 40px 15px;
+    }
+
+    form {
+      background: #ffffff;
+      padding: 30px 40px;
+      border-radius: 16px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      max-width: 700px;
+      width: 100%;
+      transition: transform 0.2s ease;
+    }
+
+    form:hover { transform: translateY(-3px); }
+
+    h1 {
+      text-align: center;
+      color: #1b4b7a;
+      margin-bottom: 10px;
+    }
+
+    p.description {
+      text-align: center;
+      color: #555;
+      font-size: 15px;
+      margin-bottom: 30px;
+    }
+
+    fieldset {
+      border: none;
+      border-left: 4px solid #1b4b7a;
+      background: #f8faff;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 25px;
+    }
+
+    legend {
+      font-weight: bold;
+      color: #1b4b7a;
+      padding-bottom: 6px;
+      font-size: 17px;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 6px;
+      font-weight: 600;
+      color: #2c3e50;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #ccd5e0;
+      border-radius: 8px;
+      font-size: 15px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: #1b4b7a;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(27, 75, 122, 0.2);
+    }
+
+    textarea { height: 100px; resize: vertical; }
+
+    input[type="radio"], input[type="checkbox"] {
+      width: auto;
+      margin-right: 8px;
+      transform: scale(1.1);
+      accent-color: #1b4b7a;
+    }
+
+    input:invalid { border-color: #e74c3c; }
+
+    button {
+      display: block;
+      width: 100%;
+      background: #1b4b7a;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      margin-top: 10px;
+    }
+
+    button:hover { background: #163d65; }
+
+    em { color: #7f8c8d; font-size: 13px; }
+  </style>
+</head>
+
+<body>
+  <form action="quiz_result.php" method="post">
+    <h1>Front-End Quiz</h1>
+    <p class="description">
+      Welcome! Please complete this short quiz about web development. Fill in your information and answer the questions below.
+    </p>
+
+    <fieldset>
+      <legend>Student Information</legend>
+      <label for="firstname">First Name</label>
+      <input type="text" id="firstname" name="firstname" placeholder="Your first name" required>
+
+      <label for="lastname">Last Name</label>
+      <input type="text" id="lastname" name="lastname" placeholder="Your last name" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" required>
+    </fieldset>
+
+    <fieldset>
+      <legend>Quiz Date</legend>
+      <label for="quiz-date">Select the date</label>
+      <input type="date" id="quiz-date" name="quiz_date" required>
+      <em>Note: Date input may not be supported in some browsers.</em>
+    </fieldset>
+
+    <fieldset>
+      <legend>Question 1: Which language is used to structure web pages?</legend>
+      <label><input type="radio" name="q1" value="html" required> HTML</label>
+      <label><input type="radio" name="q1" value="css"> CSS</label>
+      <label><input type="radio" name="q1" value="javascript"> JavaScript</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Question 2: Which of these are CSS properties?</legend>
+      <label><input type="checkbox" name="q2[]" value="color"> color</label>
+      <label><input type="checkbox" name="q2[]" value="font-size"> font-size</label>
+      <label><input type="checkbox" name="q2[]" value="for"> for</label>
+      <label><input type="checkbox" name="q2[]" value="border"> border</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Question 3: What does the &lt;head&gt; tag contain in an HTML document?</legend>
+      <textarea name="q3" placeholder="Your answer..."></textarea>
+    </fieldset>
+
+    <fieldset>
+      <legend>Question 4: Write a short HTML or CSS snippet</legend>
+      <textarea name="code" placeholder="Example: &lt;p&gt;Hello World!&lt;/p&gt;"></textarea>
+    </fieldset>
+
+    <fieldset>
+      <legend>Question 5: Which tag is used to insert an image in HTML?</legend>
+      <label><input type="radio" name="q5" value="img" required> &lt;img&gt;</label>
+      <label><input type="radio" name="q5" value="image"> &lt;image&gt;</label>
+      <label><input type="radio" name="q5" value="picture"> &lt;picture&gt;</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Question 6: Which of the following are JavaScript data types?</legend>
+      <label><input type="checkbox" name="q6[]" value="string"> string</label>
+      <label><input type="checkbox" name="q6[]" value="boolean"> boolean</label>
+      <label><input type="checkbox" name="q6[]" value="number"> number</label>
+      <label><input type="checkbox" name="q6[]" value="selector"> selector</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Question 7: Which HTML tag is used to create a link?</legend>
+      <label><input type="radio" name="q7" value="a" required> &lt;a&gt;</label>
+      <label><input type="radio" name="q7" value="link"> &lt;link&gt;</label>
+      <label><input type="radio" name="q7" value="href"> &lt;href&gt;</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Question 8: Enter a valid website URL</legend>
+      <input type="url" name="q8" placeholder="https://example.com" required>
+    </fieldset>
+
+    <fieldset>
+      <legend>Question 9: Rate your comfort level with CSS (1 to 10)</legend>
+      <input type="range" name="q9" min="1" max="10" step="1">
+    </fieldset>
+
+    <fieldset>
+      <legend>Question 10: Your HTML knowledge level</legend>
+      <select name="q10" required>
+        <optgroup label="Beginner">
+          <option value="new">I just started learning</option>
+        </optgroup>
+        <optgroup label="Intermediate">
+          <option value="comfortable">I understand most basic tags</option>
+          <option value="good">I can build full pages</option>
+        </optgroup>
+        <optgroup label="Advanced">
+          <option value="expert">I write semantic, clean HTML</option>
+        </optgroup>
+      </select>
+    </fieldset>
+
+    <button type="submit">Submit Quiz</button>
+  </form>
+</body>
+</html>
